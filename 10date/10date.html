@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add, Update, or Delete Program</title>
+</head>
+<body>
+<h1>Add, Update, or Delete Program</h1>
+
+<input type="text" id="itemInput" placeholder="Enter item">
+<button onclick="addItem()">Add</button>
+
+<ul id="itemList"></ul>
+
+<script>
+function addItem() {
+  const itemInput = document.getElementById('itemInput');
+  const newItem = itemInput.value;
+  
+  if (newItem) {
+    const itemList = document.getElementById('itemList');
+    itemList.innerHTML += `<li>${newItem} <button onclick="updateItem(this)">Update</button> <button onclick="removeItem(this)">Delete</button></li>`;
+    itemInput.value = '';
+  }
+}
+
+function removeItem(button) {
+  button.parentElement.remove();
+}
+
+function updateItem(button) {
+  const newItem = prompt("Enter new value:");
+  if (newItem !== null && newItem.trim() !== '') {
+    button.parentElement.firstChild.textContent = newItem;
+  }
+}
+</script>
+</body>
+</html>
+
+<!-- note taking application build a simple note taking application that allows users to create 
+,edit ,and delete notes.javascript can organize the "create, read ,update, and delete " operation and store the notes it the 
+browser's local storage. -->
